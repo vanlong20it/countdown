@@ -17,6 +17,12 @@ const SECONDS_PER_DAY = 24 * 60 * 60;
 const SECONDS_PER_HOUR = 60 * 60;
 const SECONDS_PER_MINUTE = 60;
 
+/**
+ * 10000s
+ * 100s
+ *
+ */
+
 onMounted(() => {
   if (timeToParse() < 0) {
     hasExpired.value = true;
@@ -38,25 +44,19 @@ const remainDays = () => {
 
 const remainHours = () => {
   return Math.floor(
-    (timeToParse() - remainDays() * SECONDS_PER_DAY) / SECONDS_PER_HOUR
+    (timeToParse() % SECONDS_PER_DAY) / SECONDS_PER_HOUR
   );
 };
 
 const remainMinutes = () => {
   return Math.floor(
-    (timeToParse() -
-      remainDays() * SECONDS_PER_DAY -
-      remainHours() * SECONDS_PER_HOUR) /
-      SECONDS_PER_MINUTE
+    (timeToParse() % SECONDS_PER_HOUR) / SECONDS_PER_MINUTE
   );
 };
 
 const remainSeconds = () => {
   return Math.floor(
-    timeToParse() -
-      remainDays() * SECONDS_PER_DAY -
-      remainHours() * SECONDS_PER_HOUR -
-      remainMinutes() * SECONDS_PER_MINUTE
+    timeToParse() % SECONDS_PER_MINUTE
   );
 };
 
@@ -110,7 +110,7 @@ const timeToParse = () => {
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
   }
-  .alert-title{
+  .alert-title {
     text-align: center;
   }
 }
