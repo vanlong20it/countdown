@@ -1,10 +1,15 @@
 <script setup>
-
+defineProps({ title: String });
 </script>
 
 <template>
-  <div></div>
+  <h1 class="title">{{ title }}</h1>
 </template>
 
 <style>
+.copyright {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
 </style>

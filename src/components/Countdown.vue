@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, defineProps, ref, onMounted } from "vue";
 import CountItem from "./CountItem.vue";
+import Banner from "./Banner.vue";
 const props = defineProps({
   time: String,
   event_title: String,
@@ -68,7 +69,7 @@ const timeToParse = () => {
 </script>
 <template>
   <div class="countdown">
-    <h1 class="title">{{ props.event_title }}</h1>
+    <Banner :title="props.event_title" />
     <h2 v-if="hasExpired" class="alert-title">Event has expired!</h2>
     <div class="countdown-list" v-if="!hasExpired">
       <li>

@@ -1,11 +1,13 @@
 <script setup>
 import Countdown from "./components/Countdown.vue";
 import data from "./json/data.json";
+import Copyright from "./components/Copyright.vue";
 </script>
 
 <template>
   <main class="main-app">
     <Countdown :time="data.event" :event_title="data.title" />
+    <Copyright />
   </main>
 </template>
 
